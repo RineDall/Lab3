@@ -6,6 +6,7 @@ color_dict = mcol.TABLEAU_COLORS
 def lin2db(x):
     return 10 * np.log10(x)
 
+# test comment
 def db2lin(x):
     return 10 ** (x / 10)
 
