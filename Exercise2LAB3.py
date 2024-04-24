@@ -42,7 +42,6 @@ class PCM:
         snr_total = 1 / (1 / snr_adc + 1 / snr_bsc)
         return snr_total
 
-    #another comment
     def critical_pe(s):
         snr_adc = s.adc.snr()
         snr_bsc = s.bsc.snr()
