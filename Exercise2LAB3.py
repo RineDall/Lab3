@@ -35,6 +35,7 @@ class PCM:
         s.analog_bandwidth = analog_bandwidth
         s.adc = ADC(adc_n_bit)
         s.bsc = BSC(bsc_error_prob)
+        s.n_bit = adc_n_bit
 
     def snr(self):
         snr_adc = self.adc.snr()
@@ -43,10 +44,9 @@ class PCM:
         return snr_total
 
     def critical_pe(s):
-        snr_adc = s.adc.snr()
-        snr_bsc = s.bsc.snr()
-        pe_critical = 1 / (1 / snr_adc + 1 / snr_bsc)
-        return pe_critical[0]
+        pe_critical = 1 / (4 * (2 ** (2 * s.n_bit) - 1))
+        print(pe_critical)
+        return pe_critical
 
 def exercise_2():
     n_bits = [2, 4, 8, 16]
