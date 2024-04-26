@@ -33,11 +33,11 @@ def exercise_1():
     n_bits = [2, 3, 4, 6, 8, 10, 12, 14, 16]
     error_prob = np.logspace(-12, 0, 100)
 
-    adc_snrs = [ADC(n_bit).snr() for n_bit in n_bits]
-    bsc_snrs = BSC(error_prob).snr()
+    adc_snrs = [lin2db(ADC(n_bit).snr()) for n_bit in n_bits]
+    bsc_snrs = lin2db(BSC(error_prob).snr())
 
     plt.figure(figsize=(10, 6))
-    plt.plot(n_bits, adc_snrs, label='Quantization SNR (ADC)', color='red', marker='o')
+    plt.plot(n_bits, adc_snrs, label='Quantization SNR (ADC)', color='blue', marker='o')
     plt.xlabel('Number of Bits (ADC)')
     plt.ylabel('SNR (dB)')
     plt.title('Quantization SNR (ADC)')
